@@ -18,7 +18,7 @@ module "mail_records" {
   zone_id        = cloudflare_zone.example_com.id
   dmarc_rua      = ["dmarc_rua@example.com"]
   dmarc_ruf      = ["dmarc_ruf@example.com", "dmarc_ruf@example.net"]
-  dkim_publickey = "your publick key" 
+  dkim_publickey = "your public key" 
   sub_domain     = "@" #optional default= "@" 
   ttl            = 3600 #optional default = "Auto"
   

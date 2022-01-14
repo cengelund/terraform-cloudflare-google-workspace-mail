@@ -26,7 +26,7 @@ resource "cloudflare_record" "spf" {
 
 resource "cloudflare_record" "dkim" {
   zone_id = var.zone_id
-  name    = format("%s._domainkey", var.domainkey_prefix)
+  name    = format("%s._domainkey", var.dkim_domainkey_prefix)
   value   = format("v=DKIM1; k=rsa; p=%s", var.dkim_publickey)
   type    = "TXT"
   ttl     = var.ttl

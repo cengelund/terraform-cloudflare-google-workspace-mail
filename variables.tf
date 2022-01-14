@@ -14,12 +14,15 @@ variable "ttl" {
   type        = number
 }
 
-variable "domainkey_prefix" {
+variable "dkim_domainkey_prefix" {
   default     = "google"
-  description = "Prifix for DKIM TXT Record (optional)"
+  description = "Prifix / selector for DKIM TXT Record (optional)"
   type        = string
 }
-
+variable "dkim_publickey" {
+  description = "DKIM public key"
+  type        = string
+}
 variable "dmarc_rua" {
   type        = list(string)
   description = "Email addresses for DMARC Aggregate reports (excluding `mailto:`)"

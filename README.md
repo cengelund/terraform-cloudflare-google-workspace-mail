@@ -12,8 +12,8 @@ resource "cloudflare_zone" "example_com" {
   zone = "example.com"
 }
 
-module mail_records {
-  source = "./modules/cloudflare-gmail-mx-records"
+module "mail_records" {
+  source = "git::https://github.com/cengelund/terraform-cloudflare-google-workspace-mail.git"
 
   zone_id     = cloudflare_zone.example_com.id
   dmarc_rua   = ["dmarc_rua@example.com"]

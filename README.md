@@ -1,4 +1,4 @@
-#Cloudflare Google MX Records for domains infrastructure
+# Cloudflare Google MX Records for domains infrastructure
 
 This module creates MX records to Google mails and email related best practises. 
 

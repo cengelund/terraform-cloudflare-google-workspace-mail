@@ -21,7 +21,7 @@ resource "cloudflare_record" "spf" {
   name    = "@"
   value   = "v=spf1 ${join(" ", concat(["include:_spf.google.com"], var.spf_terms, ["-all"]))}"
   type    = "TXT"
-  ttl      = var.ttl
+  ttl     = var.ttl
 }
 
 resource "cloudflare_record" "dkim" {
@@ -29,7 +29,7 @@ resource "cloudflare_record" "dkim" {
   name    = format("%s._domainkey", var.domainkey_prefix)
   value   = "v=DKIM1; p="
   type    = "TXT"
-  ttl      = var.ttl
+  ttl     = var.ttl
 }
 
 resource "cloudflare_record" "dmarc" {
@@ -37,5 +37,5 @@ resource "cloudflare_record" "dmarc" {
   name    = "_dmarc"
   value   = "v=DMARC1; p=reject; rua=mailto:${join(",mailto:", var.dmarc_rua)}; ruf=mailto:${join(",mailto:", var.dmarc_ruf)}; fo=1:d:s"
   type    = "TXT"
-  ttl      = var.ttl
+  ttl     = var.ttl
 }

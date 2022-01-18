@@ -23,6 +23,17 @@ variable "dkim_publickey" {
   description = "DKIM public key"
   type        = string
 }
+
+
+variable "dmarc_policy" {
+  type        = string
+  description = "Dmarc policy used. (Optional) Default policy is reject. Allowed values are: none(take no action only log), quarantine(mark as spam) and reject(cancel the mail at smtp)"
+  default = "reject"
+validation {
+    condition     = contains(["none", "quarantine", "reject"], var.dmarc_policy)
+    error_message = "Allowed values for input_parameter are \"none\", \"quarantine\", or \"reject\"."
+  }
+}
 variable "dmarc_rua" {
   type        = list(string)
   description = "Email addresses for DMARC Aggregate reports (excluding `mailto:`)"
@@ -63,3 +74,4 @@ variable "spf_terms" {
     error_message = "SPF term must start with a valid qualifier (optional) or mechanism."
   }
 }
+

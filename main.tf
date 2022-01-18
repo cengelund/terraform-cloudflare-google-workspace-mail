@@ -35,7 +35,7 @@ resource "cloudflare_record" "dkim" {
 resource "cloudflare_record" "dmarc" {
   zone_id = var.zone_id
   name    = "_dmarc"
-  value   = "v=DMARC1; p=reject; rua=mailto:${join(",mailto:", var.dmarc_rua)}; ruf=mailto:${join(",mailto:", var.dmarc_ruf)}; fo=1:d:s"
+  value   = "v=DMARC1; p=${var.dmarc_policy}; rua=mailto:${join(",mailto:", var.dmarc_rua)}; ruf=mailto:${join(",mailto:", var.dmarc_ruf)}; fo=1:d:s"
   type    = "TXT"
   ttl     = var.ttl
 }

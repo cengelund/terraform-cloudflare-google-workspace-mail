@@ -21,7 +21,7 @@ module "mail_records" {
   dkim_publickey = "your public key" 
   sub_domain     = "@" #optional default= "@" 
   ttl            = 3600 #optional default = "Auto"
+  dmarc_policy   = "quarantine" #optional default = "reject"
   
-
 }
 ´´´

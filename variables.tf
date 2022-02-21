@@ -38,10 +38,7 @@ variable "dmarc_percentage" {
   type        = number
   description = ""
   default     = 100
-  validation {
-    condition     = var.dmarc_policy == "none" && var.dmarc_percentage > 0
-    error_message = "Percentage should not be set for policy \"none\"."
-  }
+
   validation {
     condition     = var.dmarc_percentage < 1 || var.dmarc_percentage > 100
     error_message = "Percentage should be between 1 and 100."

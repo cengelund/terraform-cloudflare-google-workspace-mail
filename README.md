@@ -22,6 +22,7 @@ module "mail_records" {
   sub_domain     = "@" #optional default= "@" 
   ttl            = 3600 #optional default = "Auto"
   dmarc_policy   = "quarantine" #optional default = "reject"
+  percentage     = 50 #optional default = not set or 100
   
 }
 ´´´

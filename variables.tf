@@ -40,7 +40,7 @@ variable "dmarc_percentage" {
   default     = 100
 
   validation {
-    condition     = var.dmarc_percentage < 1 || var.dmarc_percentage > 100
+    condition     = length(var.dmarc_percentage) > 0 && var.dmarc_percentage < 1 || var.dmarc_percentage > 100
     error_message = "Percentage should be between 1 and 100."
   }
 }

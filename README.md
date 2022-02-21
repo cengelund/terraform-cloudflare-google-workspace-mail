@@ -15,13 +15,14 @@ resource "cloudflare_zone" "example_com" {
 module "mail_records" {
   source = "git::https://github.com/cengelund/terraform-cloudflare-google-workspace-mail.git"
 
-  zone_id        = cloudflare_zone.example_com.id
-  dmarc_rua      = ["dmarc_rua@example.com"]
-  dmarc_ruf      = ["dmarc_ruf@example.com", "dmarc_ruf@example.net"]
-  dkim_publickey = "your public key" 
-  sub_domain     = "@" #optional default= "@" 
-  ttl            = 3600 #optional default = "Auto"
-  dmarc_policy   = "quarantine" #optional default = "reject"
+  zone_id          = cloudflare_zone.example_com.id
+  dmarc_rua        = ["dmarc_rua@example.com"]
+  dmarc_ruf        = ["dmarc_ruf@example.com", "dmarc_ruf@example.net"]
+  dkim_publickey   = "your public key" 
+  sub_domain       = "@" #optional default= "@" 
+  ttl              = 3600 #optional default = "Auto"
+  dmarc_policy     = "quarantine" #optional default = "reject"
+  dmarc_percentage = 50 #optional default = not set or 100
   
 }
 ´´´

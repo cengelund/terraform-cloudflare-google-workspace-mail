@@ -28,12 +28,19 @@ variable "dkim_publickey" {
 variable "dmarc_policy" {
   type        = string
   description = "Dmarc policy used. (Optional) Default policy is reject. Allowed values are: none(take no action only log), quarantine(mark as spam) and reject(cancel the mail at smtp)"
-  default = "reject"
-validation {
+  default     = "reject"
+  validation {
     condition     = contains(["none", "quarantine", "reject"], var.dmarc_policy)
     error_message = "Allowed values for input_parameter are \"none\", \"quarantine\", or \"reject\"."
   }
 }
+variable "dmarc_percentage" {
+  type        = number
+  description = "Percentage of messages that must be rejected by the Dmarc policy. (Optional) Default is 100%"
+  default     = 100
+ 
+ }
+
 variable "dmarc_rua" {
   type        = list(string)
   description = "Email addresses for DMARC Aggregate reports (excluding `mailto:`)"

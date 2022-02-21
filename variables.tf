@@ -36,14 +36,10 @@ variable "dmarc_policy" {
 }
 variable "dmarc_percentage" {
   type        = number
-  description = ""
+  description = "Percentage of messages that must be rejected by the Dmarc policy. (Optional) Default is 100%"
   default     = 100
-
-  validation {
-    condition     = length(var.dmarc_percentage) > 0 && var.dmarc_percentage < 1 || var.dmarc_percentage > 100
-    error_message = "Percentage should be between 1 and 100."
-  }
-}
+ 
+ }
 
 variable "dmarc_rua" {
   type        = list(string)
